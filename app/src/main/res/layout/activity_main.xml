@@ -4,36 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGray1"
+    android:background="@color/design_default_color_background"
     tools:context=".MainActivity">
     <!--toolbar-->
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorWhite">
+        android:background="@color/design_default_color_secondary_variant">
         <!-- title-->
+
         <TextView
             android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_centerInParent="true"
             android:text="Home"
             android:textColor="@color/colorBlack"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
+
         <ImageButton
             android:id="@+id/refreshBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_refresh_black"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="5dp"
-            android:background="@android:color/transparent"/>
-
-
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_refresh_black" />
 
 
     </RelativeLayout>
@@ -47,15 +47,18 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/navigationView"
         android:layout_below="@+id/toolbarRl"
-        android:layout_marginTop="-34dp"
-        android:layout_marginBottom="34dp" />
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/tab_color"
+        app:itemTextColor="@drawable/tab_color"
+
         android:background="?android:attr/windowBackground"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom"/>
+        app:menu="@menu/menu_bottom" />
 </RelativeLayout>

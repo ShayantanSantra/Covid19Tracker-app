@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 public class HomeFragment extends Fragment {
 
-    private static final String STATS_URL = "https://api.covid19api.com/summary";
+    private static final String STATS_URL = "https://disease.sh/v3/covid-19/all";
     Context context;
     private ProgressBar progressBar;
     private TextView totalCasesTv,newCasesTv,totalDeathsTv,newDeathsTv,totalRecoveredTv,newRecoveredTv;
@@ -85,14 +85,14 @@ public class HomeFragment extends Fragment {
     private void handleResponse(String response){
         try{
             JSONObject jsonObject = new JSONObject(response);
-            JSONObject globalJo = jsonObject.getJSONObject("Global");
+            //JSONObject globalJo = jsonObject.getJSONObject("Global");
 
-            String newConfirmed = globalJo.getString("NewConfirmed");
-            String totalConfirmed = globalJo.getString("TotalConfirmed");
-            String newDeaths = globalJo.getString("NewDeaths");
-            String totalDeaths = globalJo.getString("TotalDeaths");
-            String newRecovered = globalJo.getString("NewRecovered");
-            String totalRecovered = globalJo.getString("TotalRecovered");
+            String newConfirmed = jsonObject.getString("todayCases");
+            String totalConfirmed = jsonObject.getString("updated");
+            String newDeaths = jsonObject.getString("todayDeaths");
+            String totalDeaths = jsonObject.getString("deaths");
+            String newRecovered = jsonObject.getString("todayRecovered");
+            String totalRecovered = jsonObject.getString("recovered");
 
             totalCasesTv.setText(totalConfirmed);
             newCasesTv.setText(newConfirmed);

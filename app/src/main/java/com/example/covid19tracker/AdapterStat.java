@@ -78,7 +78,7 @@ public class AdapterStat  extends  RecyclerView.Adapter<AdapterStat.HolderStat> 
             deathsTv=itemView.findViewById(R.id.deathsTv);
             todayDeathsTv=itemView.findViewById(R.id.todayDeathsTv);
             recoveredTv=itemView.findViewById(R.id.recoveredTv);
-            todayRecoveredTv = itemView.findViewById(R.id.todayRecoveredTv);
+            todayRecoveredTv = itemView.findViewById(R.id.todayRecoversTv);
 
 
 
