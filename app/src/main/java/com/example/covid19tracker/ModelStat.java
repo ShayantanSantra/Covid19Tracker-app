@@ -2,20 +2,19 @@ package com.example.covid19tracker;
 
 public class ModelStat {
 
-    String Country,CountryCode, Slug, NewConfirmed,TotalConfirmed,NewDeaths,NewRecovered,TotalRecovered,Date;
+    String Country,CountryCode, Slug, NewConfirmed,TotalConfirmed,NewDeaths, TotalDeaths, NewRecovered,TotalRecovered,Date;
 
-    public ModelStat()
-    {
-
+    public ModelStat(){
     }
 
-    public ModelStat(String country, String countryCode, String slug, String newConfirmed, String totalConfirmed, String newDeaths, String newRecovered, String totalRecovered, String date) {
+    public ModelStat(String country, String countryCode, String slug, String newConfirmed, String totalConfirmed, String newDeaths, String totalDeaths, String newRecovered, String totalRecovered, String date) {
         Country = country;
         CountryCode = countryCode;
         Slug = slug;
         NewConfirmed = newConfirmed;
         TotalConfirmed = totalConfirmed;
         NewDeaths = newDeaths;
+        TotalDeaths = totalDeaths;
         NewRecovered = newRecovered;
         TotalRecovered = totalRecovered;
         Date = date;
@@ -69,6 +68,14 @@ public class ModelStat {
         NewDeaths = newDeaths;
     }
 
+    public String getTotalDeaths() {
+        return TotalDeaths;
+    }
+
+    public void setTotalDeaths(String totalDeaths) {
+        TotalDeaths = totalDeaths;
+    }
+
     public String getNewRecovered() {
         return NewRecovered;
     }
@@ -93,3 +100,5 @@ public class ModelStat {
         Date = date;
     }
 }
+
+
