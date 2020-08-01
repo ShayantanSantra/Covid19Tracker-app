@@ -95,8 +95,12 @@ public class StatsFragment extends Fragment {
         });
         //popup
         final PopupMenu popupMenu=new PopupMenu(context,sortBtn);
-        popupMenu.getMenu().add(Menu.NONE, 0, 0,"Ascending");
-        popupMenu.getMenu().add(Menu.NONE,1,1,"Descending");
+        popupMenu.getMenu().add(Menu.NONE, 0, 0,"Name Ascending");
+        popupMenu.getMenu().add(Menu.NONE,1,1,"Name Descending");
+        popupMenu.getMenu().add(Menu.NONE,2,2,"Deaths Ascending");
+        popupMenu.getMenu().add(Menu.NONE,3,3,"Deaths Descending");
+        popupMenu.getMenu().add(Menu.NONE,4,4,"Cases Ascending");
+        popupMenu.getMenu().add(Menu.NONE,5,5,"Cases Descending");
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -109,6 +113,26 @@ public class StatsFragment extends Fragment {
                 else if(id==1){
                     Collections.sort(statArrayList,new SortStatCountryDesc());
                     adapterStat.notifyDataSetChanged();
+                }
+                else if(id==2){
+                    Collections.sort(statArrayList,new SortStatCountryAsDeath());
+                    adapterStat.notifyDataSetChanged();
+
+                }
+                else if(id==3){
+                    Collections.sort(statArrayList,new SortStatCountryDesDeath());
+                    adapterStat.notifyDataSetChanged();
+
+                }
+                else if(id==4){
+                    Collections.sort(statArrayList,new SortStatCountryAsCases());
+                    adapterStat.notifyDataSetChanged();
+
+                }
+                else if(id==5){
+                    Collections.sort(statArrayList,new SortStatCountryDesCases());
+                    adapterStat.notifyDataSetChanged();
+
                 }
                 return false;
             }
@@ -163,7 +187,7 @@ public class StatsFragment extends Fragment {
                 ModelStat modelStat=gson.fromJson(jsonArray.getJSONObject(i).toString(), ModelStat.class);
                 statArrayList.add(modelStat);
             }
-            //setup adpter
+            //setup adapter
             adapterStat =new AdapterStat(context,statArrayList);
             statsRv.setAdapter(adapterStat);
             progressBar.setVisibility(View.GONE);
@@ -185,6 +209,34 @@ public class StatsFragment extends Fragment {
         @Override
         public int compare(ModelStat left, ModelStat right) {
             return right.getCountry().compareTo(left.getCountry());
+        }
+    }
+    public class SortStatCountryAsCases implements Comparator<ModelStat>{
+
+        @Override
+        public int compare(ModelStat l, ModelStat r) {
+            return l.getTotalConfirmed().compareTo(r.getTotalConfirmed());
+        }
+    }
+    public class SortStatCountryDesCases implements Comparator<ModelStat>{
+
+        @Override
+        public int compare(ModelStat l, ModelStat r) {
+            return r.getTotalConfirmed().compareTo(l.getTotalConfirmed());
+        }
+    }
+    public class SortStatCountryAsDeath implements Comparator<ModelStat>{
+
+        @Override
+        public int compare(ModelStat l, ModelStat r) {
+            return l.getTotalDeaths().compareTo(r.getTotalDeaths());
+        }
+    }
+    public class SortStatCountryDesDeath implements Comparator<ModelStat>{
+
+        @Override
+        public int compare(ModelStat l, ModelStat r) {
+            return r.getTotalDeaths().compareTo(l.getTotalDeaths());
         }
     }
 

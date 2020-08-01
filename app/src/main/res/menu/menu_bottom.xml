@@ -8,4 +8,8 @@
         android:title="Stats"
         android:icon="@drawable/ic_stats_black"
         />
+    <item android:id="@+id/map-view"
+        android:title="Map"
+        android:icon="@drawable/ic_baseline_public"
+        />
 </menu>
